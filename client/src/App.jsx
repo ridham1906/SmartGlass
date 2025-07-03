@@ -4,6 +4,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/LandingPage/Home";
 import Upload from "./pages/UploadPage/Upload";
 import ChatbotPage from "./pages/ChatbotPage";
+import QuizPage from "./pages/QuizPage";
 import Login from "./pages/AuthPages/Login";
 import Signup from "./pages/AuthPages/Signup";
 import ResetPassword from "./pages/AuthPages/ResetPassword";
@@ -17,16 +18,17 @@ export default function App() {
       <Router>
         <div className="min-h-screen flex flex-col bg-gray-50">
           <Navbar />
-          <Toaster position="top-center" /> 
+          <Toaster position="top-center" />
           <main className="flex-grow pt-6 pb-12 px-4">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/upload" element={<Upload />} />
               <Route path="/chatbot" element={<ChatbotPage />} />
               <Route path="/login" element={<Login />} />
-              <Route path="/signup" element={<Signup />} /> 
+              <Route path="/signup" element={<Signup />} />
+              <Route path="/quiz" element={<QuizPage />} />
               <Route path="/reset-password" element={<ResetPassword />} />
-              <Route path="*" element={<NotFound />}/>
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </main>
           <Footer />
