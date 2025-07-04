@@ -11,6 +11,7 @@ import ResetPassword from "./pages/AuthPages/ResetPassword";
 import { Toaster } from "react-hot-toast"; 
 import { useState, useEffect } from "react";
 import Chatbot from "./components/Chatbot";
+import { AuthProvider } from './context/AuthContext.jsx';
 
 
 export default function App() {
