@@ -1,5 +1,6 @@
 import { Server } from "socket.io";
 import socketAuth from "../middleware/socketAuth.js";
+import { updateAnswer, submitVote } from "./socketController.js";
 
 export default (server) => {
   const io = new Server(server, {
@@ -46,6 +47,19 @@ export default (server) => {
         if (ack) ack({ status: 'error', message: 'Failed to submit answer' });
       }
     });
+    socket.on('join-room', (roomId) => {
+      socket.join(roomId);
+      socket.emit("success", {msg: "Session Joined", status: "success"});
+    }
+  );
+
+    socket.on('submit-answer', async({ data }) => {
+        updateAnswer(data, socket);
+    });
+
+    socket.on('submit-vote', async(data)=> {
+       submitVote(data, socket);
+    })
 
     socket.on("send-message", ({ room, message }, ack) => {
       try {

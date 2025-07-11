@@ -72,7 +72,7 @@ export default function Navbar() {
                   Upload
                 </span>
               </Link>
-              <Link to="/chatbot" className={linkClass("/chatbot")}>
+              <Link to="/chat" className={linkClass("/chatbot")}>
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path
@@ -85,6 +85,21 @@ export default function Navbar() {
                   Chatbot
                 </span>
               </Link>
+              {auth?.user && (
+              <Link to="/dashboard" className={linkClass("/dashboard")}>
+                <span className="flex items-center gap-2">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8-4.97 0-9-3.582-9-8s4.03-8 9-8 9 3.582 9 8z"
+                    />
+                  </svg>
+                 📊 Dashboard
+                </span>
+              </Link>
+              )}
             </div>
 
             {/* Login Button */}
@@ -124,7 +139,7 @@ export default function Navbar() {
         {/* Mobile Navigation */}
         <div
           className={`md:hidden transition-all duration-300 ease-in-out ${
-            isMobileMenuOpen ? "max-h-64 opacity-100 pb-4 mb-3" : "max-h-0 opacity-0 overflow-hidden"
+            isMobileMenuOpen ? "max-h-80 opacity-100 pb-4 mb-3" : "max-h-0 opacity-0 overflow-hidden"
           }`}
         >
           <div className="bg-white rounded-2xl mt-4 p-4 shadow-xl border border-gray-100">
@@ -175,14 +190,42 @@ export default function Navbar() {
                   Chatbot
                 </span>
               </Link>
+              {auth?.user && (
+               <Link
+                to="/dashboard"
+                className={mobileLinkClass("/dashboard")}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <span className="flex items-center gap-3">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
+                    />
+                  </svg>
+                 📊 Dashboard
+                </span>
+              </Link>
+              )}
               <div className="pt-2 border-t border-gray-200">
-                <Link
+
+                {!auth.isLoggedIn ?
+                (<Link
                   to="/login"
                   className="block w-full px-4 py-3 bg-blue-600 text-white text-center rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   Login
-                </Link>
+                </Link>) :
+                (<button
+                  className="block w-full px-4 py-3 bg-blue-600 text-white text-center rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>)
+                } 
               </div>
             </div>
           </div>
