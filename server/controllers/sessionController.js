@@ -9,7 +9,9 @@ function generateAccessCode() {
 
 export const createSession = async (req, res) => {
     try {
+      console.log("createSession called with body:", req.body);
       const { name } = req.body;
+      
       const educatorId = req.userId;
   
       const session = await Session.create({

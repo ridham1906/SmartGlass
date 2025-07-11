@@ -49,7 +49,7 @@ export default function Signup() {
       let firebaseRes = await registerUser(email, password);
       
       let res = await handleApi(API.post('/auth', {name, firebaseToken: firebaseRes.accessToken}));
-      
+     
       if(res.status === 200){
         const { token, user } = res.data;
         auth.loginContext(user, token);   
@@ -78,6 +78,8 @@ export default function Signup() {
           let firebaseRes = await loginWithGoogle();
 
           let res = await handleApi(API.post('/auth', {name, firebaseToken: firebaseRes.accessToken}));
+          console.log("res:", firebaseRes.accessToken);
+          localStorage.setItem("firebaseToken", firebaseRes.accessToken);
       
           if(res.status === 200){
             const { token, user } = res.data;
