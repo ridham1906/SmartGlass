@@ -3,7 +3,9 @@ import { adminAuth } from "../services/firebase.js";
 import jwt from "jsonwebtoken";
 
 export const authenticate =  async (req, res) => {
+  // console.log("authenticate called with body:", req.body);
   const { name, firebaseToken } = req.body;
+  console.log("authenticate called with body:", req.firebaseToken);
 
   try {
     const decoded = await adminAuth.verifyIdToken(firebaseToken);
@@ -18,7 +20,7 @@ export const authenticate =  async (req, res) => {
       });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
       expiresIn: "7d"
     });
 
