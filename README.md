@@ -45,7 +45,7 @@ Project-SmartGlass/
 - **Authentication:** Firebase
 - **Cloud Storage:** Cloudinary
 
-## My Contributions 
+## AI - Contribution ( Saba Ahmed )
 - Integrated an AI-powered tutor with math solving, PDF Q&A, and summarization in one system.  
 - Set up FAISS for vector search and Astra DB for chat history/metadata storage.  
 - Added PDF upload (both URL and local file support) with text extraction and chunking.  
