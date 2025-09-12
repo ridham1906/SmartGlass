@@ -45,6 +45,15 @@ Project-SmartGlass/
 - **Authentication:** Firebase
 - **Cloud Storage:** Cloudinary
 
+## My Contributions 
+- Integrated an AI-powered tutor with math solving, PDF Q&A, and summarization in one system.  
+- Set up FAISS for vector search and Astra DB for chat history/metadata storage.  
+- Added PDF upload (both URL and local file support) with text extraction and chunking.  
+- Built routing in FastAPI (`main.py`) to auto-detect question type (math, PDF, or general) and send it to the right module.  
+- Fixed bugs in PDF parsing and FAISS indexing, improving reliability of Q&A.  
+
+
+
 ## 🧑‍💻 Installation
 
 ### Prerequisites
